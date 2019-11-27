@@ -18,16 +18,22 @@
 
     <h3>Directions:</h3>
     <blockquote>
-      <p>1. Append a date or a unix timestamp to the end of the url for this Heroku app ("https://cryptic-oasis-58746.herokuapp.com/November%2019,%115415" or "https://cryptic-oasis-58746.herokuapp.com/1450137600" and the app will return the Unix timestamp and the natural language form of that date.</p>
+      <p>1. Append a date or a unix timestamp to the end of the url for this Heroku app and it will return the Unix timestamp and the natural language form of that date.</p>
     </blockquote>
 
+    <h3>Example Usage:</h3>
+        <ul>
+          <li>
+            <a href="https://intense-taiga-28353.herokuapp.com/api/timestamp/2019-11-27">[project url]/api/timestamp/2019-11-27</a>
+          </li>
+          <li>
+            <a href="https://intense-taiga-28353.herokuapp.com/api/timestamp/1574848131">[project url]/api/timestamp/1574848131</a>
+          </li>
+        </ul>
 
     <h3>This is what you should see:</h3>
     <code>
-      {
-        unix: 1450137600,
-        natural: "November 26, 2019"
-      }
+      {"unix": 1574848131, "utc":"Wed, 27 November 2019 09:50:00 GMT"}
     </code>
 
     <br/>
