@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const http = require("http").Server(app);
 const path = require("path");
+const moment = require("moment");
 const port = process.env.PORT || 8080;
 const cors = require("cors");
 
@@ -14,6 +15,7 @@ app.set("port", (process.env.PORT || 5000));
 
 app.get("/", (req, res, next) =>
   res.sendFile(path.join(__dirname, "/index.html")));
+
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC
 
@@ -30,15 +32,16 @@ app.get("/api/timestamp/:date_string", function(req, res) {
   const dateString = req.params.date_string;
   if (/\d{5,}/.test(dateString)) {
     const dateInt = parseInt(dateString);
-    res.json({ unix: dateString, utc: new Date(dateInt).toUTCString() });
-}
 
+  res.json({ unix: dateString, utc: new Date(dateInt).toUTCString() });
+}
   const dateObject = new Date(dateString);
 
-  if (dateObject.toString() === "Invalid Date") {
+  if (dateObject.toUTCString() === "Invalid Date") {
       res.json({ error: "Invalid Date" });
       } else {
-        res.json({ unix: dateObject.valueOf(), utc: dateObject.toUTString() });
+
+        res.json({ unix: dateObject.valueOf(), utc: dateObject.toUTCString() });
       }
 });
 
